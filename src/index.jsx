@@ -43,7 +43,7 @@ export default class Pagination extends Component {
 
         {!props.diableInputPaginate &&
           <li className="page-input-wrap">
-            <input ref="pageInput" className="page-input" defaultValue={this.state.selected+1}/>
+            <input ref="pageInput" className="page-input" value={this.state.selected+1} onChange={this._onChange}/>
             <button className="page-input-btn" onTouchTap={this._onInputOk}>{props.inputOkBtnLabel}</button>
           </li>
         }
@@ -133,6 +133,10 @@ export default class Pagination extends Component {
       selected: selected
     });
     props.onPageSelected && props.onPageSelected(selected);
+  }
+
+  _onChange(e){
+
   }
 
   _onInputOk(e){
