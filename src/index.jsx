@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import createFragment from 'react-addons-create-fragment';
 
-import PageItem from './PageItem.jsx';
+import PageItem from './PageItem';
 
 export default class Pagination extends Component {
   constructor(props){
