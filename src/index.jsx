@@ -67,7 +67,7 @@ export default class Pagination extends Component {
     }else{
       let leftSide = props.middleDisplayRange / 2,
         rightSide = props.middleDisplayRange - leftSide,
-        pageItem, curPage;
+        pageItem, curPage, breakView;
 
       if(this.state.selected > props.pageNum - props.middleDisplayRange / 2){
         rightSide = props.pageNum - this.state.selected;
@@ -77,7 +77,7 @@ export default class Pagination extends Component {
         rightSide = props.middleDisplayRange - leftSide;
       }
 
-      for(var i=0; i<pageNum; i++){
+      for(var i=0; i<props.pageNum; i++){
         curPage = i + 1;
         pageItem = <PageItem
                     selected={this.state.selected === i}
@@ -98,14 +98,14 @@ export default class Pagination extends Component {
 
         //break
         let keys = Object.keys(items),
-          lastBreakLabel = items[keys[keys.length-1]];
-        if(lastBreakLabel !== breakView){
-          breakView = (
+          lastBreakItem = items[keys[keys.length-1]];
+        if(lastBreakItem !== breakItem){
+          breakItem = (
             <li className="g-break">
               {props.breakLabel}
             </li>
           );
-          items['key'+i] = breakView;
+          items['key'+i] = breakItem;
         }
       }
     }
