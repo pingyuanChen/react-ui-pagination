@@ -32,18 +32,18 @@ export default class Pagination extends Component {
     return (
       <ul className={wrapCls} >
         <li onTouchTap={this._handlePrev} className={prevCls}>
-          <a className="page-link-btn" href="">{props.prevLabel}</a>
+          <span className="page-link-btn" href="">{props.prevLabel}</span>
         </li>
 
         {createFragment(this._getChildren())}
 
-        <li onClick={this._handleNext} className={nextCls}>
-          <a className="page-link-btn" href="" >{this.props.nextLabel}</a>
+        <li onTouchTap={this._handleNext} className={nextCls}>
+          <span className="page-link-btn" href="" >{this.props.nextLabel}</span>
         </li>
 
         {!props.diableInputPaginate &&
           <li className="page-input-wrap">
-            <input ref="pageInput" className="page-input" value={this.state.selected+1}/>
+            <input ref="pageInput" className="page-input" defaultValue={this.state.selected+1}/>
             <button className="page-input-btn" onTouchTap={this._onInputOk}>{props.inputOkBtnLabel}</button>
           </li>
         }
@@ -67,7 +67,7 @@ export default class Pagination extends Component {
     }else{
       let leftSide = props.middleDisplayRange / 2,
         rightSide = props.middleDisplayRange - leftSide,
-        pageItem, curPage, breakView;
+        pageItem, curPage, breakItem;
 
       if(this.state.selected > props.pageNum - props.middleDisplayRange / 2){
         rightSide = props.pageNum - this.state.selected;
@@ -101,7 +101,7 @@ export default class Pagination extends Component {
           lastBreakItem = items[keys[keys.length-1]];
         if(lastBreakItem !== breakItem){
           breakItem = (
-            <li className="g-break">
+            <li className="break">
               {props.breakLabel}
             </li>
           );

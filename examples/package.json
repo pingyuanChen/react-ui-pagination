@@ -41,7 +41,7 @@
     "react-addons-create-fragment": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-tap-event-plugin": "^0.2.2",
-    "react-ui-pagination": "^1.0.1"
+    "react-ui-pagination": "^1.0.4"
   },
   "bugs": {
     "url": "https://github.com/pingyuanChen/react-ui-pagination/issues"

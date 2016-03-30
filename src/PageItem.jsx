@@ -11,9 +11,9 @@ export default class PageItem extends React.Component {
 
     return (
       <li className={pageCls} onTouchTap={props.onSelected} >
-        <a className="page-link-btn" href="">
+        <span className="page-link-btn" href="">
           {props.page}
-        </a>
+        </span>
       </li>
     );
   }
