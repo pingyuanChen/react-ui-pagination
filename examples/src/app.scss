@@ -1,0 +1,25 @@
+@import './scss/reset';
+
+@include global-reset();
+
+#react-ui-pagination{
+  margin-top: 40px;
+}
+
+.pagination-wrap{
+  li{
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid #e4e4e4;
+    background: #fff;
+    &.selected{
+      background: #ff302d;
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+}
+.page-input-wrap{
+  margin-left: 20px;
+}
+

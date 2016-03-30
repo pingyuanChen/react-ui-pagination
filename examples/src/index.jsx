@@ -5,6 +5,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
+require ('./app.scss');
+
 ReactDOM.render(
   <Pagination
     pageNum={20}

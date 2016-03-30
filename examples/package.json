@@ -4,7 +4,7 @@
   "description": "An Example for ReactJS pagination component",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --hot --inline"
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "react-addons-create-fragment": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-tap-event-plugin": "^0.2.2",
-    "react-ui-pagination": "^1.0.4"
+    "react-ui-pagination": "^1.0.5"
   },
   "bugs": {
     "url": "https://github.com/pingyuanChen/react-ui-pagination/issues"
