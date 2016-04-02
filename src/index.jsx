@@ -16,7 +16,8 @@ export default class Pagination extends Component {
     const props = this.props;
     let wrapCls = 'pagination-wrap',
       prevCls = props.prevClassName,
-      nextCls = props.nextClassName;
+      nextCls = props.nextClassName,
+      inputDom, totalDom;
 
     if(props.wrapClassName){
       wrapCls += ' '+props.wrapClassName;
@@ -26,6 +27,20 @@ export default class Pagination extends Component {
     }
     if(this.state.selected === props.pageNum -1){
       nextCls += ' '+props.disabledClassName;
+    }
+
+    if(!props.diableInputPaginate){
+      inputDom = (
+        <li className="page-input-wrap">
+          <input ref="pageInput" className="page-input" value={this.state.selected+1} onChange={this._onChange}/>
+          <span className="input-label">{props.inputLabel || ''}</span>
+          <button className="page-input-btn" onTouchTap={this._onInputOk}>{props.inputOkBtnLabel}</button>
+        </li>
+      );
+    }
+
+    if(props.totalTpl){
+      totalDom = props.totalTpl(props.pageNum);
     }
 
 
@@ -41,12 +56,9 @@ export default class Pagination extends Component {
           <span className="page-link-btn" href="" >{this.props.nextLabel}</span>
         </li>
 
-        {!props.diableInputPaginate &&
-          <li className="page-input-wrap">
-            <input ref="pageInput" className="page-input" value={this.state.selected+1} onChange={this._onChange}/>
-            <button className="page-input-btn" onTouchTap={this._onInputOk}>{props.inputOkBtnLabel}</button>
-          </li>
-        }
+        {totalDom}
+
+        {inputDom}
       </ul>
     );
   }
@@ -166,13 +178,15 @@ Pagination.propTypes = {
   disabledClassName: PropTypes.string,
   wrapClassName: PropTypes.string,
   diableInputPaginate: PropTypes.bool,
-  inputOkBtnLabel: PropTypes.string
+  inputOkBtnLabel: PropTypes.string,
+  totalTpl: PropTypes.func
 };
 
 Pagination.defaultProps = {
   prevLabel: 'Previous',
   nextLabel: 'Next',
   breakLabel: '...',
+  inputLabel: 'Page',
   initialSelected: 0,
   pageClassName: 'page',
   selectedClassName: 'selected',
