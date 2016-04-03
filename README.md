@@ -33,7 +33,7 @@ npm start
 ```
 (*^__^*) visite http://localhost:9009/
 
-![Demo](https://github.com/pingyuanChen/react-ui-components/blob/master/demo.png)
+![Demo](https://github.com/pingyuanChen/react-ui-pagination/blob/master/demo.png)
 
 ## FAQ
 
