@@ -8,7 +8,8 @@ export default class Pagination extends Component {
   constructor(props){
     super(props);
     this.state = {
-      selected: props.initialSelected || 0
+      selected: props.initialSelected || 0,
+      inputValue: props.initialSelected || 0
     };
   }
 
@@ -32,7 +33,12 @@ export default class Pagination extends Component {
     if(!props.diableInputPaginate){
       inputDom = (
         <li className="page-input-wrap">
-          <input ref="pageInput" className="page-input" value={this.state.selected+1} onChange={this._onChange}/>
+          <input 
+            ref="pageInput" 
+            className="page-input" 
+            value={this.state.inputValue} 
+            onChange={this._onChange} 
+            onBlur={this._Blur}/>
           <span className="input-label">{props.inputLabel || ''}</span>
           <button className="page-input-btn" onTouchTap={this._onInputOk}>{props.inputOkBtnLabel}</button>
         </li>
@@ -142,19 +148,36 @@ export default class Pagination extends Component {
     e && e.preventDefault();
     const props = this.props;
     this.setState({
-      selected: selected
+      selected: selected,
+      inputValue: selected + 1
     });
     props.onPageSelected && props.onPageSelected(selected);
   }
 
   _onChange(e){
+    let value = e.target.value;
+    this.setState({
+      inputValue: value
+    });
+  }
 
+  _onBlur(e){
+    let value = e.target.value || 0;
+    value = parseInt(value);
+    if(value < 1){
+      value = 1;
+    }else if(value > this.props.pageNum){
+      value = this.props.pageNum;
+    }
+    this.setState({
+      inputValue: value
+    });
   }
 
   _onInputOk(e){
     e.preventDefault();
     const input = ReactDOM.findDOMNode(this.refs.pageInput),
-      value = input.value - 1;
+      value = parseInt(input.value) - 1;
     if(value != this.state.selected){
       this._selectPage(value);
     }
