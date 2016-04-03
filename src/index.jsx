@@ -51,13 +51,13 @@ export default class Pagination extends Component {
 
     return (
       <ul className={wrapCls} >
-        <li onTouchTap={this._handlePrev} className={prevCls}>
+        <li onTouchTap={this._handlePrev.bind(this)} className={prevCls}>
           <span className="page-link-btn" href="">{props.prevLabel}</span>
         </li>
 
         {createFragment(this._getChildren())}
 
-        <li onTouchTap={this._handleNext} className={nextCls}>
+        <li onTouchTap={this._handleNext.bind(this)} className={nextCls}>
           <span className="page-link-btn" href="" >{this.props.nextLabel}</span>
         </li>
 
