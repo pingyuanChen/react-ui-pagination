@@ -150,7 +150,7 @@ export default class Pagination extends Component {
       selected: selected,
       inputValue: selected + 1
     });
-    props.onPageSelected && props.onPageSelected(selected);
+    props.onPageSelected && props.onPageSelected(selected+1);
   }
 
   _onChange(e){
