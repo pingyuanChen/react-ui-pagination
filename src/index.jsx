@@ -9,7 +9,7 @@ export default class Pagination extends Component {
     super(props);
     this.state = {
       selected: props.initialSelected || 0,
-      inputValue: props.initialSelected || 0
+      inputValue: props.initialSelected || 1
     };
   }
 
@@ -37,8 +37,8 @@ export default class Pagination extends Component {
             ref="pageInput" 
             className="page-input" 
             value={this.state.inputValue} 
-            onChange={this._onChange} 
-            onBlur={this._Blur}/>
+            onChange={this._onChange.bind(this)} 
+            onBlur={this._Blur.bind(this)}/>
           <span className="input-label">{props.inputLabel || ''}</span>
           <button className="page-input-btn" onTouchTap={this._onInputOk}>{props.inputOkBtnLabel}</button>
         </li>
