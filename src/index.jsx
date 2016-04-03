@@ -34,7 +34,6 @@ export default class Pagination extends Component {
       inputDom = (
         <li className="page-input-wrap">
           <input 
-            ref="pageInput" 
             className="page-input" 
             value={this.state.inputValue} 
             onChange={this._onChange.bind(this)} 
@@ -176,8 +175,7 @@ export default class Pagination extends Component {
 
   _onInputOk(e){
     e.preventDefault();
-    const input = ReactDOM.findDOMNode(this.refs.pageInput),
-      value = parseInt(input.value) - 1;
+    const value = parseInt(this.state.inputValue) - 1;
     if(value != this.state.selected){
       this._selectPage(value);
     }
